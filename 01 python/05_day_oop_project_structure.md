@@ -22,7 +22,7 @@ class Person:
     def say_hello(self):
         print(f"你好，我是 {self.name}，今年 {self.age} 岁")
 
-p = Person("风中", 32)
+p = Person("风中", 28)
 p.say_hello()
 ```
 
@@ -177,6 +177,6 @@ if __name__ == "__main__":
 ### 测试方式（用 Postman 或 curl）：
 
 ```bash
-curl -X POST http://localhost:5000/add_user -H "Content-Type: application/json" -d '{"name":"风中", "age":32}'
+curl -X POST http://localhost:5000/add_user -H "Content-Type: application/json" -d '{"name":"风中", "age":28}'
 curl http://localhost:5000/users
 ```

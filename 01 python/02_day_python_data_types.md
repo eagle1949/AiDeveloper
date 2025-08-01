@@ -82,7 +82,7 @@ x, y = get_position()
 ```python
 user = {
     "name": "风中",
-    "age": 32
+    "age": 28
 }
 
 print(user["name"])

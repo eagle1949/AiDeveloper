@@ -22,7 +22,7 @@ else:
 
 ```python
 name = "风中"
-age = 32
+age = 28
 pi = 3.14
 is_dev = True
 ```
@@ -103,7 +103,7 @@ print("Hello")  # 也可以写在后面
 
 ```python
 name = "风中"
-age = 32
+age = 28
 
 print(f"你好，{name}，你今年 {age} 岁了")
 ```

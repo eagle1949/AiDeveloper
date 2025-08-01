@@ -50,7 +50,7 @@ with open("data.txt", "r", encoding="utf-8") as f:
 ```python
 import json
 
-data = {"name": "风中", "age": 32}
+data = {"name": "风中", "age": 28}
 
 with open("user.json", "w", encoding="utf-8") as f:
     json.dump(data, f, ensure_ascii=False, indent=2)

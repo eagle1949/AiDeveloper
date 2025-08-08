@@ -7,7 +7,7 @@ from datetime import datetime
 
 # 页面配置
 st.set_page_config(
-    page_title="前端开发AI助手",
+    page_title="AI助手",
     page_icon="💻",
     layout="wide"
 )
@@ -335,17 +335,17 @@ with col2:
     
     # 聊天输入
     if prompt := st.chat_input(f"向{selected_scenario}提问..."):
-        # 添加用户消息
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # 生成AI回复
         with st.chat_message("assistant"):
             message_placeholder = st.empty()
+            message_placeholder.markdown("🤔 正在思考...")
+
+            full_response = ""  # 先定义，防止未定义报错
             with st.spinner(f"{selected_scenario}正在分析..."):
                 response = call_dev_assistant(st.session_state.messages, selected_scenario)
-                full_response = ""
                 if response:
                     for chunk in response:
                         chunk_message = chunk["choices"][0]["delta"]
@@ -353,9 +353,8 @@ with col2:
                             content = chunk_message["content"]
                             full_response += content
                             message_placeholder.markdown(full_response)
-                # 只保留流式渲染，不再重复渲染
-        # 滚动到最底部
-        st.session_state.messages[-1]["content"] = full_response
+            # 只有有回复时才保存
+            st.session_state.messages[-1]["content"] = full_response
 
 # 页脚信息
 st.divider()
@@ -370,7 +369,7 @@ with footer_col1:
                 conversation.append(f"{role}: {msg['content']}")
             
             conversation_text = (
-                f"前端开发AI助手对话记录\n场景: {selected_scenario}\n时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+                f"AI助手对话记录\n场景: {selected_scenario}\n时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
                 + "\n\n".join(conversation)
             )
             
